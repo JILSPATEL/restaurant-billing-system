@@ -1,0 +1,22 @@
+	Welcome To Silver Heights Restaurant
+
+ Bill Number : 9803
+ Customer name : jayesh
+ Phone Number : 7895463254
+ Table Number : 4
+ Time : 15-09-2023 Fri 20:24:06
+ GST Number : 22AAAA0000A1Z5
+======================================================
+ Products			QTY			Price 
+======================================================
+ Samosa			3		 Rs.120
+ Tea			2	 Rs.60
+ Coffee			1	 Rs.40
+------------------------------------------------
+ GST : 			 Rs. 5.5
+ Item Total : 			 Rs. 220.0
+-------------------------------------------
+ Total Bill : 			 Rs. 225.5
+-------------------------------------------
+-----------Thank You For Visiting----------
+-------------------------------------------

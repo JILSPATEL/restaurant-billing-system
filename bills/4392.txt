@@ -1,0 +1,24 @@
+	Welcome To Silver Heights Restaurant
+
+ Bill Number : 4392
+ Customer name : rocky
+ Phone Number : 6798546213
+ Table Number : 4
+ Time : 15-09-2023 Fri 20:21:46
+ GST Number : 22AAAA0000A1Z5
+======================================================
+ Products			QTY			Price 
+======================================================
+ Idli			1		 Rs.50
+ Upma			1		 Rs.80
+ Dosa			1		 Rs.120
+ DalFry			1		 Rs.100
+ Lassi		1	 Rs.60
+------------------------------------------------
+ GST : 			 Rs. 10.25
+ Item Total : 			 Rs. 410.0
+-------------------------------------------
+ Total Bill : 			 Rs. 420.25
+-------------------------------------------
+-----------Thank You For Visiting----------
+-------------------------------------------

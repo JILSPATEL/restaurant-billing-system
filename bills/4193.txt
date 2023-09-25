@@ -1,0 +1,24 @@
+	Welcome To Silver Heights Restaurant
+
+ Bill Number : 4193
+ Customer name : rock
+ Phone Number : NA
+ Table Number : 7
+ Time : 15-09-2023 Fri 20:21:46
+ GST Number : 22AAAA0000A1Z5
+======================================================
+ Products			QTY			Price 
+======================================================
+ Samosa			2		 Rs.80
+ Puff			1		 Rs.90
+ Fries			1		 Rs.90
+ Drinks		1	 Rs.20
+ ButterMilk		1	 Rs.40
+------------------------------------------------
+ GST : 			 Rs. 8.0
+ Item Total : 			 Rs. 320.0
+-------------------------------------------
+ Total Bill : 			 Rs. 328.0
+-------------------------------------------
+-----------Thank You For Visiting----------
+-------------------------------------------
