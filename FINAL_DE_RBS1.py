@@ -420,10 +420,10 @@ class Bill_App:
         op = messagebox.askyesno("Exit", "Do you really want to exit?")
         if op > 0:
             self.root.destroy()
-    # def Print_bill(self):
-    #     file_=tempfile.mktemp(".txt")
-    #     open(file_,'w').write(self.bill_area.get('1.0',END))
-    #     os.startfile(file_,'print')
+    def Print_bill(self):
+        file=tempfile.mktemp('.txt')
+        open(file,'w').write(self.textarea.get('1.0',END))
+        os.startfile(file,'print')
 
 
 root = Tk()
