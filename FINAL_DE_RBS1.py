@@ -164,7 +164,7 @@ class Bill_App:
         s_btn = Button(btn_F, text="Save Bill", bg="cadetblue", command=self.save_bill, fg="white", bd=2, pady=15,width=10,font="arial 14 bold").grid(row=0, column=2, padx=5, pady=5)
         Clear_btn = Button(btn_F, text="Clear", command=self.clear_data, bg="cadetblue", fg="white", bd=2, pady=15, width=10, font="arial 14 bold").grid(row=0, column=3, padx=5, pady=5)
         Exit_btn = Button(btn_F, text="Exit", bg="cadetblue", command=self.Exit_app, fg="white", bd=2, pady=15,width=10, font="arial 14 bold").grid(row=0, column=4, padx=5, pady=5)
-        Print_btn = Button(btn_F, text="Print", bg="cadetblue", fg="white", bd=2, pady=15, width=10,font="arial 14 bold").grid(row=0, column=5, padx=5, pady=5)
+        Print_btn = Button(btn_F, text="Print", bg="cadetblue",command=self.Print_bill, fg="white", bd=2, pady=15, width=10,font="arial 14 bold").grid(row=0, column=5, padx=5, pady=5)
 
         self.welcome_bill()
 
