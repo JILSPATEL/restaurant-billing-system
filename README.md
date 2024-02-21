@@ -9,6 +9,10 @@ This is a simple billing system application developed using Python and Tkinter. 
 - Calculate the total bill, including item-wise prices and taxes.
 - View and save the bill with customer details, items purchased, total bill, and timestamp.
 
+## User Interface
+
+![Screenshot (11)](https://github.com/JILSPATEL/restaurant-billing-system/assets/100358865/80eb676a-b2a9-4fe8-8e0f-64b38d598814)
+
 ## Usage
 
 1. Enter the customer's name, phone number, and table number.
