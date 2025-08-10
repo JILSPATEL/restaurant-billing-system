@@ -164,7 +164,7 @@ class Bill_App:
         s_btn = Button(btn_F, text="Save Bill", bg="cadetblue", command=self.save_bill, fg="white", bd=2, pady=15,width=10,font="arial 14 bold").grid(row=0, column=2, padx=5, pady=5)
         Clear_btn = Button(btn_F, text="Clear", command=self.clear_data, bg="cadetblue", fg="white", bd=2, pady=15, width=10, font="arial 14 bold").grid(row=0, column=3, padx=5, pady=5)
         Exit_btn = Button(btn_F, text="Exit", bg="cadetblue", command=self.Exit_app, fg="white", bd=2, pady=15,width=10, font="arial 14 bold").grid(row=0, column=4, padx=5, pady=5)
-        Print_btn = Button(btn_F, text="Print", bg="cadetblue",command=self.Print_bill, fg="white", bd=2, pady=15, width=10,font="arial 14 bold").grid(row=0, column=5, padx=5, pady=5)
+        Print_btn = Button(btn_F, text="Print", bg="cadetblue", fg="white", bd=2, pady=15, width=10,font="arial 14 bold").grid(row=0, column=5, padx=5, pady=5)
 
         self.welcome_bill()
 
@@ -300,7 +300,7 @@ class Bill_App:
                     self.textarea.insert(END, f"\n-------------------------------------------")
 
                     # self.save_bill()
-                    path = Path('C:/Users/Quarks/OneDrive/Desktop/Anaconda_Python/hotel.csv')
+                    path = Path('D:/VS CODE/VS Python/Restaurant_Billing_Syatem/hotel.csv') #change as per your location
                     if (not (path.is_file())):
                         f = open('hotel.csv', 'w')
                         writer = csv.writer(f)
@@ -421,9 +421,13 @@ class Bill_App:
         if op > 0:
             self.root.destroy()
     def Print_bill(self):
-        file=tempfile.mktemp('.txt')
-        open(file,'w').write(self.textarea.get('1.0',END))
-        os.startfile(file,'print')
+        file = tempfile.mktemp('.txt')
+        with open(file, 'w', encoding='utf-8') as f:
+            f.write(self.textarea.get('1.0', END))
+        try:
+            os.startfile(file, 'print')  # This should open default text editor in print mode
+        except AttributeError:
+            print("Printing is only supported on Windows with os.startfile.")
 
 
 root = Tk()
