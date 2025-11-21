@@ -1,0 +1,22 @@
+	Welcome To Silver Heights Restaurant
+
+ Bill Number   : 4289
+ Customer Name : jay
+ Phone Number  : NA
+ Table Number  : 5
+ Time          : 21-11-2025 Fri 19:39:12
+ GST Number    : 22AAAA0000A1Z5
+==============================================
+ Products		QTY	Price
+==============================================
+ Kachori		1	Rs.30
+ Paneer Butter Masala	1	Rs.180
+ Tea		1	Rs.30
+----------------------------------------------
+ GST        : Rs. 6.0
+ Item Total : Rs. 240.0
+----------------------------------------------
+ Total Bill : Rs. 246.0
+----------------------------------------------
+     Thank You For Visiting!     
+----------------------------------------------

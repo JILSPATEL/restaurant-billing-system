@@ -1,0 +1,20 @@
+	Welcome To Silver Heights Restaurant
+
+ Bill Number   : 8331
+ Customer Name : jils
+ Phone Number  : 8976456321
+ Table Number  : 1
+ Time          : 21-11-2025 Fri 19:09:53
+ GST Number    : 22AAAA0000A1Z5
+==============================================
+ Products		QTY	Price 
+==============================================
+ Tea		1	Rs.30
+----------------------------------------------
+ GST        : Rs. 0.75
+ Item Total : Rs. 30.0
+----------------------------------------------
+ Total Bill : Rs. 30.75
+----------------------------------------------
+     Thank You For Visiting!     
+----------------------------------------------
