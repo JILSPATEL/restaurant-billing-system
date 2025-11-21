@@ -17,7 +17,8 @@ class Bill_App:
         self.root.geometry("1350x700+0+0")
         self.root.title("Billing System")
         bg_color = "#074463"
-        title = Label(self.root, text="Silver Heights Restaurant", bd=12, relief=GROOVE, bg=bg_color, fg="white",font=("times new roman", 30, "bold"), pady=2).pack(fill=X)
+        title = Label(self.root, text="Silver Heights Restaurant", bd=12, relief=GROOVE, bg=bg_color, fg="white",
+                      font=("times new roman", 30, "bold"), pady=2).pack(fill=X)
 
         # ================Variables=======================
         # ================Snacks========================
@@ -60,91 +61,140 @@ class Bill_App:
         self.bill_time = StringVar()
 
         # ================customer details frame==============
-        F1 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Customer Details", font=("times new roman", 15, "bold"),fg="gold", bg=bg_color)
+        F1 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Customer Details",
+                        font=("times new roman", 15, "bold"), fg="gold", bg=bg_color)
         F1.place(x=0, y=80, relwidth=1)
 
-        cname_lbl = Label(F1, text="Customer Name", bg=bg_color, fg="white", font=("times new roman", 15, "bold")).grid(row=0, column=0, padx=20, pady=5)
-        cname_txt = Entry(F1, width=15, textvariable=self.c_name, font="arial 15", bd=7, relief=SUNKEN).grid(row=0,column=1,padx=10,pady=5)
+        cname_lbl = Label(F1, text="Customer Name", bg=bg_color, fg="white",
+                          font=("times new roman", 15, "bold")).grid(row=0, column=0, padx=20, pady=5)
+        cname_txt = Entry(F1, width=15, textvariable=self.c_name, font="arial 15", bd=7,
+                          relief=SUNKEN).grid(row=0, column=1, padx=10, pady=5)
 
-        cphn_lbl = Label(F1, text="Phone No.", bg=bg_color, fg="white", font=("times new roman", 15, "bold")).grid(row=0, column=2, padx=20, pady=5)
-        cphn_txt = Entry(F1, width=15, textvariable=self.c_phone, font="arial 15", bd=7, relief=SUNKEN).grid(row=0,column=3,padx=10, pady=5)
+        cphn_lbl = Label(F1, text="Phone No.", bg=bg_color, fg="white",
+                         font=("times new roman", 15, "bold")).grid(row=0, column=2, padx=20, pady=5)
+        cphn_txt = Entry(F1, width=15, textvariable=self.c_phone, font="arial 15", bd=7,
+                         relief=SUNKEN).grid(row=0, column=3, padx=10, pady=5)
 
-        c_bill_lbl = Label(F1, text="Bill Number", bg=bg_color, fg="white", font=("times new roman", 15, "bold")).grid(row=0, column=4, padx=20, pady=5)
-        c_bill_txt = Entry(F1, width=15, textvariable=self.bill_no, font="arial 15", bd=7, relief=SUNKEN).grid(row=0, column=5, padx=10, pady=5)
+        c_bill_lbl = Label(F1, text="Bill Number", bg=bg_color, fg="white",
+                           font=("times new roman", 15, "bold")).grid(row=0, column=4, padx=20, pady=5)
+        c_bill_txt = Entry(F1, width=15, textvariable=self.bill_no, font="arial 15", bd=7,
+                           relief=SUNKEN).grid(row=0, column=5, padx=10, pady=5)
 
-        T_no_lbl = Label(F1, text="Table Number", bg=bg_color, fg="white", font=("times new roman", 15, "bold")).grid(row=0, column=6, padx=20, pady=5)
-        T_no_txt = Entry(F1, width=15, textvariable=self.t_no, font="arial 15", bd=7, relief=SUNKEN).grid(row=0,column=7,padx=10,pady=5)
+        T_no_lbl = Label(F1, text="Table Number", bg=bg_color, fg="white",
+                         font=("times new roman", 15, "bold")).grid(row=0, column=6, padx=20, pady=5)
+        T_no_txt = Entry(F1, width=15, textvariable=self.t_no, font="arial 15", bd=7,
+                         relief=SUNKEN).grid(row=0, column=7, padx=10, pady=5)
 
         # ===================Snacks============================
-        F2 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Snacks", font=("times new roman", 15, "bold"), fg="gold",bg=bg_color)
+        F2 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Snacks",
+                        font=("times new roman", 15, "bold"), fg="gold", bg=bg_color)
         F2.place(x=5, y=170, width=325, height=380)
 
-        sa_lbl = Label(F2, text="Samosa", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=10, pady=10, sticky="w")
-        sa_txt = Entry(F2, width=10, textvariable=self.samosa, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=0, column=1, padx=10, pady=10)
+        Label(F2, text="Samosa", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        Entry(F2, width=10, textvariable=self.samosa, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=0, column=1, padx=10, pady=10)
 
-        idli_lbl = Label(F2, text="Idli", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=10, pady=10, sticky="w")
-        idli_txt = Entry(F2, width=10, textvariable=self.idli, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=1, column=1, padx=10, pady=10)
+        Label(F2, text="Idli", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+        Entry(F2, width=10, textvariable=self.idli, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=1, column=1, padx=10, pady=10)
 
-        ua_lbl = Label(F2, text="Upma", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=10, pady=10, sticky="w")
-        ua_txt = Entry(F2, width=10, textvariable=self.upma, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=2, column=1, padx=10, pady=10)
+        Label(F2, text="Upma", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=10, pady=10, sticky="w")
+        Entry(F2, width=10, textvariable=self.upma, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=2, column=1, padx=10, pady=10)
 
-        da_lbl = Label(F2, text="Dosa", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=3, column=0, padx=10, pady=10, sticky="w")
-        da_txt = Entry(F2, width=10, textvariable=self.dosa, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=3, column=1, padx=10, pady=10)
+        Label(F2, text="Dosa", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=3, column=0, padx=10, pady=10, sticky="w")
+        Entry(F2, width=10, textvariable=self.dosa, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=3, column=1, padx=10, pady=10)
 
-        pu_lbl = Label(F2, text="Puff", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=4, column=0, padx=10, pady=10, sticky="w")
-        pu_txt = Entry(F2, width=10, textvariable=self.puff, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=4, column=1, padx=10, pady=10)
+        Label(F2, text="Puff", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=4, column=0, padx=10, pady=10, sticky="w")
+        Entry(F2, width=10, textvariable=self.puff, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=4, column=1, padx=10, pady=10)
 
-        pk_lbl = Label(F2, text="Pakoda", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=5, column=0, padx=10, pady=10, sticky="w")
-        pk_txt = Entry(F2, width=10, textvariable=self.pakoda, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=5, column=1, padx=10, pady=10)
+        Label(F2, text="Pakoda", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=5, column=0, padx=10, pady=10, sticky="w")
+        Entry(F2, width=10, textvariable=self.pakoda, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=5, column=1, padx=10, pady=10)
 
         # ===================specialities============================
-        F3 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Specialities", font=("times new roman", 15, "bold"),fg="gold", bg=bg_color)
+        F3 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Specialities",
+                        font=("times new roman", 15, "bold"), fg="gold", bg=bg_color)
         F3.place(x=335, y=170, width=325, height=380)
 
-        g1_lbl = Label(F3, text="DalFry", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=10, pady=10, sticky="w")
-        g1_txt = Entry(F3, width=10, textvariable=self.dalfry, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=0, column=1, padx=10, pady=10)
+        Label(F3, text="DalFry", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        Entry(F3, width=10, textvariable=self.dalfry, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=0, column=1, padx=10, pady=10)
 
-        g2_lbl = Label(F3, text="Burger", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=10, pady=10, sticky="w")
-        g2_txt = Entry(F3, width=10, textvariable=self.burger, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=1, column=1, padx=10, pady=10)
+        Label(F3, text="Burger", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+        Entry(F3, width=10, textvariable=self.burger, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=1, column=1, padx=10, pady=10)
 
-        g3_lbl = Label(F3, text="SSPSandwich", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=10, pady=10, sticky="w")
-        g3_txt = Entry(F3, width=10, textvariable=self.sspsandwich, font=("times new roman", 16, "bold"), bd=5, relief=SUNKEN).grid(row=2, column=1, padx=10, pady=10)
+        Label(F3, text="SSPSandwich", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=10, pady=10, sticky="w")
+        Entry(F3, width=10, textvariable=self.sspsandwich, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=2, column=1, padx=10, pady=10)
 
-        g4_lbl = Label(F3, text="Fries", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=3,column=0,padx=10,pady=10,sticky="w")
-        g4_txt = Entry(F3, width=10, textvariable=self.fries, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=3, column=1, padx=10, pady=10)
+        Label(F3, text="Fries", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=3, column=0, padx=10, pady=10, sticky="w")
+        Entry(F3, width=10, textvariable=self.fries, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=3, column=1, padx=10, pady=10)
 
-        g5_lbl = Label(F3, text="SSPNoodles", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=4, column=0, padx=10, pady=10, sticky="w")
-        g5_txt = Entry(F3, width=10, textvariable=self.sspnoodles, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=4, column=1, padx=10, pady=10)
+        Label(F3, text="SSPNoodles", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=4, column=0, padx=10, pady=10, sticky="w")
+        Entry(F3, width=10, textvariable=self.sspnoodles, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=4, column=1, padx=10, pady=10)
 
-        g6_lbl = Label(F3, text="Biryani", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=5, column=0, padx=10, pady=10, sticky="w")
-        g6_txt = Entry(F3, width=10, textvariable=self.biryani, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=5, column=1, padx=10, pady=10)
+        Label(F3, text="Biryani", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=5, column=0, padx=10, pady=10, sticky="w")
+        Entry(F3, width=10, textvariable=self.biryani, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=5, column=1, padx=10, pady=10)
 
         # ===================Bevarages============================
-        F4 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Beverages", font=("times new roman", 15, "bold"),fg="gold", bg=bg_color)
+        F4 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Beverages",
+                        font=("times new roman", 15, "bold"), fg="gold", bg=bg_color)
         F4.place(x=665, y=170, width=325, height=380)
 
-        c1_lbl = Label(F4, text="Tea", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=0,column=0,padx=30,pady=10,sticky="w")
-        c1_txt = Entry(F4, width=10, textvariable=self.tea, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=0, column=1, padx=10, pady=10)
+        Label(F4, text="Tea", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=30, pady=10, sticky="w")
+        Entry(F4, width=10, textvariable=self.tea, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=0, column=1, padx=10, pady=10)
 
-        c2_lbl = Label(F4, text="Coffee", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=10, pady=10, sticky="w")
-        c2_txt = Entry(F4, width=10, textvariable=self.coffee, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=1, column=1, padx=10, pady=10)
+        Label(F4, text="Coffee", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+        Entry(F4, width=10, textvariable=self.coffee, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=1, column=1, padx=10, pady=10)
 
-        c3_lbl = Label(F4, text="Drinks", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=10, pady=10, sticky="w")
-        c3_txt = Entry(F4, width=10, textvariable=self.drinks, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=2, column=1, padx=10, pady=10)
+        Label(F4, text="Drinks", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=10, pady=10, sticky="w")
+        Entry(F4, width=10, textvariable=self.drinks, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=2, column=1, padx=10, pady=10)
 
-        c4_lbl = Label(F4, text="Buttermilk", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=3, column=0, padx=10, pady=10, sticky="w")
-        c4_txt = Entry(F4, width=10, textvariable=self.buttermilk, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=3, column=1, padx=10, pady=10)
+        Label(F4, text="Buttermilk", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=3, column=0, padx=10, pady=10, sticky="w")
+        Entry(F4, width=10, textvariable=self.buttermilk, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=3, column=1, padx=10, pady=10)
 
-        c5_lbl = Label(F4, text="Lassi", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=4,column=0,padx=10,pady=10,sticky="w")
-        c5_txt = Entry(F4, width=10, textvariable=self.lassi, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=4, column=1, padx=10, pady=10)
+        Label(F4, text="Lassi", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=4, column=0, padx=10, pady=10, sticky="w")
+        Entry(F4, width=10, textvariable=self.lassi, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=4, column=1, padx=10, pady=10)
 
-        c6_lbl = Label(F4, text="Coco", font=("times new roman", 15, "bold"), bg=bg_color, fg="lightgreen").grid(row=5,column=0,padx=10,pady=10,sticky="w")
-        c6_txt = Entry(F4, width=10, textvariable=self.coco, font=("times new roman", 16, "bold"), bd=5,relief=SUNKEN).grid(row=5, column=1, padx=10, pady=10)
+        Label(F4, text="Coco", font=("times new roman", 15, "bold"),
+              bg=bg_color, fg="lightgreen").grid(row=5, column=0, padx=10, pady=10, sticky="w")
+        Entry(F4, width=10, textvariable=self.coco, font=("times new roman", 16, "bold"),
+              bd=5, relief=SUNKEN).grid(row=5, column=1, padx=10, pady=10)
 
         # ==================Bill Area===================
         F5 = Frame(self.root, bd=10, relief=GROOVE)
         F5.place(x=1000, y=170, width=528, height=620)
-        bill_title = Label(F5, text="Bill Area", font=("times new roman", 15, "bold"), bd=7, relief=GROOVE).pack(fill=X)
+        bill_title = Label(F5, text="Bill Area", font=("times new roman", 15, "bold"),
+                           bd=7, relief=GROOVE).pack(fill=X)
         scrol_y = Scrollbar(F5, orient=VERTICAL)
         self.textarea = Text(F5, yscrollcommand=scrol_y.set)
         scrol_y.pack(side=RIGHT, fill=Y)
@@ -152,19 +202,25 @@ class Bill_App:
         self.textarea.pack(fill=BOTH, expand=1)
 
         # =================Button Frame=================
-
-        F6 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Bill Menu", font=("times new roman", 16, "bold"),pady=18,fg="gold", bg=bg_color)
+        F6 = LabelFrame(self.root, bd=10, relief=GROOVE, text="Bill Menu",
+                        font=("times new roman", 16, "bold"), pady=18, fg="gold", bg=bg_color)
         F6.place(x=0, y=556, relwidth=0.65, height=215)
 
         btn_F = Frame(F6, bd=7, relief=GROOVE)
         btn_F.place(x=50, width=730, relwidth=0.13, height=115)
 
-        Cbill_btn = Button(btn_F, text="Calculate Bill", command=self.total, bg="cadetblue", fg="white", bd=2, pady=15,width=10,font="arial 14 bold").grid(row=0, column=0, padx=5, pady=13)
-        ViewBill_btn = Button(btn_F, text="View Bill", command=self.bill_area, bg="cadetblue", fg="white", bd=2,pady=15, width=10, font="arial 14 bold").grid(row=0, column=1, padx=5, pady=5)
-        s_btn = Button(btn_F, text="Save Bill", bg="cadetblue", command=self.save_bill, fg="white", bd=2, pady=15,width=10,font="arial 14 bold").grid(row=0, column=2, padx=5, pady=5)
-        Clear_btn = Button(btn_F, text="Clear", command=self.clear_data, bg="cadetblue", fg="white", bd=2, pady=15, width=10, font="arial 14 bold").grid(row=0, column=3, padx=5, pady=5)
-        Exit_btn = Button(btn_F, text="Exit", bg="cadetblue", command=self.Exit_app, fg="white", bd=2, pady=15,width=10, font="arial 14 bold").grid(row=0, column=4, padx=5, pady=5)
-        Print_btn = Button(btn_F, text="Print", bg="cadetblue", fg="white", bd=2, pady=15, width=10,font="arial 14 bold").grid(row=0, column=5, padx=5, pady=5)
+        Button(btn_F, text="Calculate Bill", command=self.total, bg="cadetblue", fg="white", bd=2, pady=15,
+               width=10, font="arial 14 bold").grid(row=0, column=0, padx=5, pady=13)
+        Button(btn_F, text="View Bill", command=self.bill_area, bg="cadetblue", fg="white", bd=2, pady=15,
+               width=10, font="arial 14 bold").grid(row=0, column=1, padx=5, pady=5)
+        Button(btn_F, text="Save Bill", bg="cadetblue", command=self.save_bill, fg="white", bd=2, pady=15,
+               width=10, font="arial 14 bold").grid(row=0, column=2, padx=5, pady=5)
+        Button(btn_F, text="Clear", command=self.clear_data, bg="cadetblue", fg="white", bd=2, pady=15,
+               width=10, font="arial 14 bold").grid(row=0, column=3, padx=5, pady=5)
+        Button(btn_F, text="Exit", bg="cadetblue", command=self.Exit_app, fg="white", bd=2, pady=15,
+               width=10, font="arial 14 bold").grid(row=0, column=4, padx=5, pady=5)
+        Button(btn_F, text="Print", bg="cadetblue", fg="white", bd=2, pady=15, width=10,
+               font="arial 14 bold", command=self.Print_bill).grid(row=0, column=5, padx=5, pady=5)
 
         self.welcome_bill()
 
@@ -261,7 +317,7 @@ class Bill_App:
                     if self.pakoda.get() != 0:
                         self.textarea.insert(END, f"\n pakoda\t\t\t{self.pakoda.get()}\t\t Rs.{self.s_pd_p}")
 
-                        # =====specialities===
+                    # =====specialities===
                     if self.dalfry.get() != 0:
                         self.textarea.insert(END, f"\n DalFry\t\t\t{self.dalfry.get()}\t\t Rs.{self.sp_d_p}")
                     if self.burger.get() != 0:
@@ -271,7 +327,7 @@ class Bill_App:
                     if self.fries.get() != 0:
                         self.textarea.insert(END, f"\n Fries\t\t\t{self.fries.get()}\t\t Rs.{self.sp_f_p}")
                     if self.sspnoodles.get() != 0:
-                        self.textarea.insert(END, f"\n SSPNoodles\t\t\t{self.puff.get()}\t\t Rs.{self.sp_n_p}")
+                        self.textarea.insert(END, f"\n SSPNoodles\t\t\t{self.sspnoodles.get()}\t\t Rs.{self.sp_n_p}")
                     if self.biryani.get() != 0:
                         self.textarea.insert(END, f"\n Biryani\t\t\t{self.biryani.get()}\t\t Rs.{self.sp_by_p}")
 
@@ -299,133 +355,114 @@ class Bill_App:
                     self.textarea.insert(END, f"\n-----------Thank You For Visiting----------")
                     self.textarea.insert(END, f"\n-------------------------------------------")
 
-                    # self.save_bill()
-                    path = Path('D:/VS CODE/VS Python/Restaurant_Billing_Syatem/hotel.csv') #change as per your location
-                    if (not (path.is_file())):
-                        f = open('hotel.csv', 'w')
-                        writer = csv.writer(f)
-                        fn = ['Bill_Number', 'Customer_Name', 'Phone_Number', 'Table_Number', 'Total_GST', 'Total_Bill',
-                              'Date&Time']
-                        writer.writerow(fn)
-                        writer = csv.DictWriter(f, fieldnames=fn)
-                        writer.writerow({fn[0]: self.bill_no.get(), fn[1]: self.c_name.get(), fn[2]: self.c_phone.get(),
-                                         fn[3]: self.t_no.get(), fn[4]: self.total_gst, fn[5]: self.Total_bill,
-                                         fn[6]: self.formatted_time})
-                        f.close()
-                    else:
-                        f = open('hotel.csv', 'a')
-                        fn = ['Bill_Number', 'Customer_Name', 'Phone_Number', 'Table_Number', 'Total_GST', 'Total_Bill',
-                              'Date&Time']
-                        writer = csv.DictWriter(f, fieldnames=fn)
-                        writer.writerow({fn[0]: self.bill_no.get(), fn[1]: self.c_name.get(), fn[2]: self.c_phone.get(),
-                                         fn[3]: self.t_no.get(), fn[4]: self.total_gst, fn[5]: self.Total_bill
-                                            , fn[6]: self.formatted_time})
-                        f.close()
-
-                    csv_file_path = path
-
-                    if not Path(csv_file_path).is_file():
-                        # Create a new CSV file and write the header row
-                        with open(csv_file_path, 'w', newline='') as csv_file:
-                            fieldnames = ['Bill_Number', 'Customer_Name', 'Phone_Number', 'Table_Number', 'Total_GST',
-                                          'Total_Bill', 'Date&Time']
-                            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-                            writer.writeheader()
-
-                            # Write the data for the current bill
-                            writer.writerow({
-                                'Bill_Number': self.bill_no.get(),
-                                'Customer_Name': self.c_name.get(),
-                                'Phone_Number': self.c_phone.get(),
-                                'Table_Number': self.t_no.get(),
-                                'Total_GST': self.total_gst,
-                                'Total_Bill': self.Total_bill,
-                                'Date&Time': self.formatted_time
-                            })
-                    else:
-                        # Append data to existing CSV file
-                        with open(csv_file_path, 'a', newline='') as csv_file:
-                            fieldnames = ['Bill_Number', 'Customer_Name', 'Phone_Number', 'Table_Number', 'Total_GST',
-                                          'Total_Bill', 'Date&Time']
-                            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
-                            # Write the data for the current bill
-                            writer.writerow({
-                                'Bill_Number': self.bill_no.get(),
-                                'Customer_Name': self.c_name.get(),
-                                'Phone_Number': self.c_phone.get(),
-                                'Table_Number': self.t_no.get(),
-                                'Total_GST': self.total_gst,
-                                'Total_Bill': self.Total_bill,
-                                'Date&Time': self.formatted_time
-                            })
                 else:
                     messagebox.showerror("Error", "phone no should be length 10")
 
             else:
                 messagebox.showerror("Error", "Customer name should be in Character")
 
+    # ====================== CSV HELPER ======================
+    def save_to_csv(self):
+        path = Path('hotel.csv')
+        fieldnames = [
+            'Bill_Number', 'Customer_Name', 'Phone_Number',
+            'Table_Number', 'Total_GST', 'Total_Bill', 'Date&Time'
+        ]
+
+        file_exists = path.is_file()
+
+        with open(path, 'a', newline='') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            if not file_exists:
+                writer.writeheader()
+            writer.writerow({
+                'Bill_Number': self.bill_no.get(),
+                'Customer_Name': self.c_name.get(),
+                'Phone_Number': self.c_phone.get(),
+                'Table_Number': self.t_no.get(),
+                'Total_GST': self.total_gst,
+                'Total_Bill': self.Total_bill,
+                'Date&Time': self.formatted_time
+            })
+
+    # =========================== UPDATED FUNCTION ===========================
     def save_bill(self):
         op = messagebox.askyesno("Save Bill", "Do you want to save the Bill?")
         if op > 0:
+            # Make sure totals are calculated
+            self.total()
+
+            # CREATE THE FOLDER SAFELY (Works even if already exists)
+            os.makedirs("bills", exist_ok=True)
+
             self.bill_data = self.textarea.get('1.0', END)
-            f1 = open("bills/" + str(self.bill_no.get()) + ".txt", "w")
-            f1.write(self.bill_data)
-            f1.close()
+
+            file_path = f"bills/{self.bill_no.get()}.txt"
+
+            with open(file_path, "w", encoding="utf-8") as f1:
+                f1.write(self.bill_data)
+
+            # Save summary to CSV as well
+            self.save_to_csv()
+
             messagebox.showinfo("Saved", f"Bill no. : {self.bill_no.get()} saved successfully")
+
+            # After successful save, clear all input and start fresh bill
+            self.reset_fields()
         else:
             return
+    # ========================================================================
+
+    def reset_fields(self):
+        """Reset all fields without asking confirmation (used by Clear & Save)."""
+        self.samosa.set(0)
+        self.idli.set(0)
+        self.upma.set(0)
+        self.dosa.set(0)
+        self.puff.set(0)
+        self.pakoda.set(0)
+        self.dalfry.set(0)
+        self.burger.set(0)
+        self.sspsandwich.set(0)
+        self.fries.set(0)
+        self.sspnoodles.set(0)
+        self.biryani.set(0)
+        self.tea.set(0)
+        self.coffee.set(0)
+        self.drinks.set(0)
+        self.buttermilk.set(0)
+        self.lassi.set(0)
+        self.coco.set(0)
+
+        self.snacks_p.set("")
+        self.specialities_p.set("")
+        self.bevarages_p.set("")
+
+        self.c_name.set("")
+        self.c_phone.set("")
+        self.bill_no.set("")
+        self.t_no.set("")
+        x = random.randint(1000, 9999)
+        self.bill_no.set(str(x))
+        self.search_bill.set("")
+        self.welcome_bill()
 
     def clear_data(self):
         op = messagebox.askyesno("Clear", "Do you really want to clear Data?")
         if op > 0:
-            # ================Cosmatic========================
-            self.samosa.set(0)
-            self.idli.set(0)
-            self.upma.set(0)
-            self.dosa.set(0)
-            self.puff.set(0)
-            self.pakoda.set(0)
-            # ================specialities==========================
-            self.dalfry.set(0)
-            self.burger.set(0)
-            self.sspsandwich.set(0)
-            self.fries.set(0)
-            self.sspnoodles.set(0)
-            self.biryani.set(0)
-            # ================Cold Drinks======================
-            self.tea.set(0)
-            self.coffee.set(0)
-            self.drinks.set(0)
-            self.buttermilk.set(0)
-            self.lassi.set(0)
-            self.coco.set(0)
-
-            # =======total product pdalfry====================
-            self.snacks_p.set("")
-            self.specialities_p.set("")
-            self.bevarages_p.set("")
-
-            # =================Customer=======================
-            self.c_name.set("")
-            self.c_phone.set("")
-            self.bill_no.set("")
-            self.t_no.set("")
-            x = random.randint(1000, 9999)
-            self.bill_no.set(str(x))
-            self.search_bill.set("")
-            self.welcome_bill()
+            self.reset_fields()
 
     def Exit_app(self):
         op = messagebox.askyesno("Exit", "Do you really want to exit?")
         if op > 0:
             self.root.destroy()
+
     def Print_bill(self):
         file = tempfile.mktemp('.txt')
         with open(file, 'w', encoding='utf-8') as f:
             f.write(self.textarea.get('1.0', END))
         try:
-            os.startfile(file, 'print')  # This should open default text editor in print mode
+            os.startfile(file, 'print')
         except AttributeError:
             print("Printing is only supported on Windows with os.startfile.")
 
