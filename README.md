@@ -1,43 +1,170 @@
-# RESTAURANT_BILLING_SYSTEM
+# 🍽️ RESTAURANT BILLING SYSTEM  
+### Modern Billing System using Python, Tkinter & MySQL (v2.0)
 
-This is a simple billing system application developed using Python and Tkinter. It allows the restaurant staff to take orders, calculate the total bill, and generate a printable bill receipt for the customers.
+The Restaurant Billing System is a Python-based desktop application designed to help restaurant staff take orders, calculate bills, store bill history, and print receipts.  
+Version **2.0** introduces a modern UI, theme switching, MySQL storage, and major improvements over Version 1.0.
 
-## Features
+---
 
-- Enter customer details, including name, phone number, and table number.
-- Choose items from the menu in three categories: Snacks, Specialties, and Beverages.
-- Calculate the total bill, including item-wise prices and taxes.
-- View and save the bill with customer details, items purchased, total bill, and timestamp.
+## ⭐ What's New in Version 2.0
 
-## User Interface
+- Modern UI using **ttkbootstrap** (Flatly + Darkly themes)
+- **Dark / Light Mode Toggle** button
+- Fully **auto-responsive layout** using `.grid()`
+- **MySQL database integration** for storing bills
+- **Search Bill** by Bill Number or Phone Number
+- **View All Bills** table window
+- Added **6 new Indian vegetarian food items**
+- Cleaner Bill Area layout and reduced space gaps
+- **Windows Print** support
+- Save bill as **TXT file**
+- Automatic bill number generation
 
-![Screenshot (11)](https://github.com/JILSPATEL/restaurant-billing-system/assets/100358865/80eb676a-b2a9-4fe8-8e0f-64b38d598814)
+---
 
-## Usage
+## 🆚 Version Comparison (v1.0 vs v2.0)
 
-1. Enter the customer's name, phone number, and table number.
-2. Choose the quantity of items from each category (Snacks, Specialties, and Beverages).
-3. Click the "Calculate Bill" button to view the total bill with item-wise prices and taxes.
-4. Optionally, click the "View Bill" button to see the complete bill in the "Bill Area."
-5. Click the "Save Bill" button to save the bill in a CSV file named `hotel.csv`.
-6. Click the "Clear" button to reset the order and customer details.
-7. Click the "Exit" button to close the application.
+| Feature | v1.0 | v2.0 |
+|--------|------|-------|
+| UI Framework | Basic Tkinter | Modern ttkbootstrap |
+| Theme Mode | No | Yes (Dark + Light) |
+| Layout System | `.place()` | `.grid()` (responsive) |
+| Storage | CSV only | MySQL + CSV |
+| Search Bills | No | Yes |
+| View All Bills | No | Yes |
+| Menu Items | Limited | +6 new items |
+| Printing | Basic | Improved printing |
+| Code Quality | Basic | Modular & scalable |
 
-## Data Persistence
+---
 
-The application saves the customer's bill in a CSV file named `hotel.csv`. If the file does not exist, it creates one and writes the data to it. If the file already exists, it appends the new bill data to the existing file.
+## 📸 Screenshots (v2.0)
 
-## Dependencies
+### Main Application Window  
+![v2_main](https://github.com/user-attachments/assets/721ab536-21a7-4e1c-9a7e-808c6bff8645)
 
-- Python 3.x
-- tkinter (built-in with Python)
-- csv (built-in with Python)
-- random (built-in with Python)
-- time (built-in with Python)
-- tempfile (built-in with Python)
-- os (built-in with Python)
-- pathlib (built-in with Python)
+### Search Bills Window  
+![v2_search](https://github.com/user-attachments/assets/14a9b668-d4bf-4280-a334-bbee64ecbc5d)
 
-## Note
+---
 
-This application has a basic implementation and can be further enhanced by adding more features, validation checks, and improvements to the user interface.
+## 🖼️ Old UI (v1.0)
+
+![v1_screenshot](https://github.com/JILSPATEL/restaurant-billing-system/assets/100358865/80eb676a-b2a9-4fe8-8e0f-64b38d598814)
+
+---
+
+## 🍽️ Features (v2.0)
+
+- Customer details input (Name, Phone, Table Number)
+- Menu categories:
+  - Snacks
+  - Specialities
+  - Beverages
+- Automatic calculations:
+  - Item Total
+  - GST (2.5%)
+  - Final Bill Amount
+- Bill preview area
+- Save bill as **TXT file**
+- Save bill to **MySQL database**
+- Search bill by:
+  - Bill Number  
+  - Phone Number  
+- View all bills (table format)
+- Print bill (Windows)
+- Dark/Light theme toggle
+- Auto-created `bills/` directory for receipts
+
+---
+
+## 🛠 Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/JILSPATEL/restaurant-billing-system.git
+cd restaurant-billing-system
+```
+
+### 2️⃣ Install Required Python Packages.
+```bash
+pip install ttkbootstrap
+pip install mysql-connector-python
+```
+
+### 3️⃣ MySQL Setup
+#### Make sure MySQL is installed (Windows or WSL).
+```bash
+mysql -u root -p
+CREATE DATABASE rbs;
+EXIT;
+```
+### ▶️ Run the Application
+```bash
+python rbs.py
+```
+### 📦 Project Structure
+
+```
+restaurant-billing-system/
+├── rbs.py                    # main application
+├── bills/                    # TXT receipts (auto-created)
+├── README.md                 # documentation
+└── RBS_v2_setup_guide.pdf    # setup guide
+```
+
+
+## 📁 Data Persistence
+
+### ✔ MySQL Database Stores:
+- Bill number  
+- Customer name  
+- Phone number  
+- Table number  
+- GST  
+- Total bill amount  
+- Date & time  
+
+### ✔ CSV Backup
+- `hotel.csv` is used as an additional offline storage file.
+---
+
+## 📚 Dependencies
+
+- Python 3.x  
+- tkinter (built-in)  
+- ttkbootstrap  
+- mysql-connector-python  
+- csv  
+- os  
+- time  
+- tempfile  
+- pathlib  
+- random  
+
+> All modules are built-in except **ttkbootstrap** and **mysql-connector-python**.
+
+---
+
+## 👨‍💻 Author
+
+**Jils Patel**  
+Python & System Software Developer  
+MTech CSE '27  
+
+---
+
+## ⭐ Support
+
+If you find this project helpful, please consider **starring ⭐ the repository** on GitHub!
+
+---
+
+If you want:
+- GitHub badges (stars, forks, Python version)  
+- A README banner  
+- Version 2.0 release notes  
+- A LICENSE file  
+
+Just tell me — I can generate them!
