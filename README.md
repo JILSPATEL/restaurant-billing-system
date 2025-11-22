@@ -116,6 +116,16 @@ restaurant-billing-system/
 └── RBS_v2_setup_guide.pdf    # setup guide
 ```
 
+### 📊 Get insights from the database.
+- Find Day Wise Collection 
+```bash
+SELECT 
+    DATE(STR_TO_DATE(datetime_str, '%d-%m-%Y')) as bill_date,
+    SUM(total_bill) as total_collection
+FROM bills
+GROUP BY DATE(STR_TO_DATE(datetime_str, '%d-%m-%Y'))
+ORDER BY bill_date;
+```
 
 ## 📁 Data Persistence
 
