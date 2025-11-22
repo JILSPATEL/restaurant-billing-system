@@ -33,6 +33,7 @@ Version **2.0** introduces a modern UI, theme switching, MySQL storage, and majo
 | Search Bills | No | Yes |
 | View All Bills | No | Yes |
 | Menu Items | Limited | +6 new items |
+| Edit Bill | No | Added |
 | Printing | Basic | Improved printing |
 | Code Quality | Basic | Modular & scalable |
 
@@ -74,6 +75,7 @@ Version **2.0** introduces a modern UI, theme switching, MySQL storage, and majo
 - View all bills (table format)
 - Print bill (Windows)
 - Dark/Light theme toggle
+- Edit Bills 
 - Auto-created `bills/` directory for receipts
 
 ---
