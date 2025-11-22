@@ -41,7 +41,7 @@ Version **2.0** introduces a modern UI, theme switching, MySQL storage, and majo
 ## 📸 Screenshots (v2.0)
 
 ### Main Application Window  
-![v2_main](https://github.com/user-attachments/assets/721ab536-21a7-4e1c-9a7e-808c6bff8645)
+![v2_main](https://github.com/user-attachments/assets/c20cec59-70fe-43d9-b1f3-4c7f20a07fa1)
 
 ### Search Bills Window  
 ![v2_search](https://github.com/user-attachments/assets/14a9b668-d4bf-4280-a334-bbee64ecbc5d)
