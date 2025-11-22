@@ -264,41 +264,143 @@ class Bill_App:
 
     def _build_button_bar(self, parent):
         frame = tb.Frame(parent, padding=5)
-        frame.grid_columnconfigure(tuple(range(8)), weight=1)
 
+        # We need 9 buttons → configure 9 grid columns
+        for c in range(9):
+            frame.grid_columnconfigure(c, weight=1, uniform="btn")
+
+        # --- BUTTONS (all same width because of uniform="btn") ---
         tb.Button(frame, text="Calculate Bill",
-                  command=self.total, bootstyle="success-outline").grid(
+                command=self.total,
+                bootstyle="success").grid(
             row=0, column=0, padx=4, pady=4, sticky="ew"
         )
+
         tb.Button(frame, text="View Bill",
-                  command=self.bill_area, bootstyle="info-outline").grid(
+                command=self.bill_area,
+                bootstyle="info").grid(
             row=0, column=1, padx=4, pady=4, sticky="ew"
         )
+
         tb.Button(frame, text="Save Bill (TXT)",
-                  command=self.save_bill, bootstyle="secondary-outline").grid(
+                command=self.save_bill,
+                bootstyle="secondary").grid(
             row=0, column=2, padx=4, pady=4, sticky="ew"
         )
+
         tb.Button(frame, text="View All Bills",
-                  command=self.show_all_bills, bootstyle="secondary").grid(
+                command=self.show_all_bills,
+                bootstyle="secondary").grid(
             row=0, column=3, padx=4, pady=4, sticky="ew"
         )
+
         tb.Button(frame, text="Search Bill",
-                  command=self.search_bills, bootstyle="info").grid(
+                command=self.search_bills,
+                bootstyle="info").grid(
             row=0, column=4, padx=4, pady=4, sticky="ew"
         )
+
         tb.Button(frame, text="Clear",
-                  command=self.clear_data, bootstyle="warning-outline").grid(
+                command=self.clear_data,
+                bootstyle="warning").grid(
             row=0, column=5, padx=4, pady=4, sticky="ew"
         )
+
         tb.Button(frame, text="Print",
-                  command=self.Print_bill, bootstyle="secondary").grid(
+                command=self.Print_bill,
+                bootstyle="secondary").grid(
             row=0, column=6, padx=4, pady=4, sticky="ew"
         )
+
         tb.Button(frame, text="Exit",
-                  command=self.Exit_app, bootstyle="danger").grid(
+                command=self.Exit_app,
+                bootstyle="danger").grid(
             row=0, column=7, padx=4, pady=4, sticky="ew"
         )
+
+        tb.Button(frame, text="Edit Bill",
+                command=self.edit_bill_window,
+                bootstyle="primary").grid(
+            row=0, column=8, padx=4, pady=4, sticky="ew"
+        )
+
         return frame
+
+
+    def edit_bill_window(self):
+        if self.db_conn is None:
+            messagebox.showerror("Error", "Database not connected.")
+            return
+
+        win = tb.Toplevel(self.root)
+        win.title("Edit Existing Bill")
+        win.geometry("500x250")
+
+        bill_var = tk.StringVar()
+
+        tb.Label(win, text="Enter Bill Number to Edit:", font=("Arial", 12, "bold")).pack(pady=10)
+        tb.Entry(win, textvariable=bill_var, width=25).pack(pady=5)
+
+        def load_bill():
+            bill_no = bill_var.get().strip()
+            if not bill_no:
+                messagebox.showerror("Error", "Enter a bill number.")
+                return
+
+            try:
+                self.db_cursor.execute(
+                    "SELECT customer_name, phone_number, table_number FROM bills WHERE bill_number=%s",
+                    (bill_no,)
+                )
+                row = self.db_cursor.fetchone()
+
+                if not row:
+                    messagebox.showerror("Not Found", "No bill found with this number.")
+                    return
+
+                # Load into main UI
+                self.bill_no.set(bill_no)
+                self.c_name.set(row[0])
+                self.c_phone.set(row[1])
+                self.t_no.set(row[2])
+
+                messagebox.showinfo("Loaded", "Bill loaded! You can now edit and update it.")
+                win.destroy()
+
+            except Error as e:
+                messagebox.showerror("Error", f"Database error:\n{e}")
+
+        tb.Button(win, text="Load Bill", bootstyle="success", command=load_bill).pack(pady=20)
+        
+    def update_bill_in_database(self):
+        try:
+            sql = """
+            UPDATE bills
+            SET customer_name=%s,
+                phone_number=%s,
+                table_number=%s,
+                total_gst=%s,
+                total_bill=%s,
+                datetime_str=%s
+            WHERE bill_number=%s
+            """
+            vals = (
+                self.c_name.get(),
+                self.c_phone.get(),
+                self.t_no.get(),
+                float(self.total_gst),
+                float(self.Total_bill),
+                self.get_current_time_str(),
+                self.bill_no.get()
+            )
+            self.db_cursor.execute(sql, vals)
+            self.db_conn.commit()
+            return True
+
+        except Error as e:
+            messagebox.showerror("Database Error", f"Failed to update bill:\n{e}")
+            return False
+
 
     # ------------------------------------------------------------------
     # UTILITIES / DB
@@ -418,6 +520,7 @@ class Bill_App:
         self.textarea.insert(tk.END, "\n==============================================")
 
     def bill_area(self):
+        # ---------------- VALIDATION ----------------
         if self.c_name.get() == "" or self.c_phone.get() == "":
             messagebox.showerror("Error", "Customer details are required")
             return
@@ -428,62 +531,55 @@ class Bill_App:
             messagebox.showerror("Error", "Phone number must be 10 digits or 'NA'")
             return
 
+        # ---------------- REFRESH BILL AREA ----------------
         self.welcome_bill()
 
-        # snacks
-        if self.samosa.get():
-            self.textarea.insert(tk.END, f"\n Samosa\t\t{self.samosa.get()}\tRs.{self.s_s_p}")
-        if self.idli.get():
-            self.textarea.insert(tk.END, f"\n Idli\t\t{self.idli.get()}\tRs.{self.s_i_p}")
-        if self.upma.get():
-            self.textarea.insert(tk.END, f"\n Upma\t\t{self.upma.get()}\tRs.{self.s_u_p}")
-        if self.dosa.get():
-            self.textarea.insert(tk.END, f"\n Dosa\t\t{self.dosa.get()}\tRs.{self.s_d_p}")
-        if self.puff.get():
-            self.textarea.insert(tk.END, f"\n Puff\t\t{self.puff.get()}\tRs.{self.s_pf_p}")
-        if self.pakoda.get():
-            self.textarea.insert(tk.END, f"\n Pakoda\t\t{self.pakoda.get()}\tRs.{self.s_pd_p}")
-        if self.poha.get():
-            self.textarea.insert(tk.END, f"\n Poha\t\t{self.poha.get()}\tRs.{self.poha_p}")
-        if self.kachori.get():
-            self.textarea.insert(tk.END, f"\n Kachori\t\t{self.kachori.get()}\tRs.{self.kachori_p}")
+        # ---------------- SNACKS ----------------
+        snacks_items = [
+            ("Samosa", self.samosa, self.s_s_p),
+            ("Idli", self.idli, self.s_i_p),
+            ("Upma", self.upma, self.s_u_p),
+            ("Dosa", self.dosa, self.s_d_p),
+            ("Puff", self.puff, self.s_pf_p),
+            ("Pakoda", self.pakoda, self.s_pd_p),
+            ("Poha", self.poha, self.poha_p),
+            ("Kachori", self.kachori, self.kachori_p)
+        ]
+        for name, qty, price in snacks_items:
+            if qty.get():
+                self.textarea.insert(tk.END, f"\n {name}\t\t{qty.get()}\tRs.{price}")
 
-        # specialities
-        if self.dalfry.get():
-            self.textarea.insert(tk.END, f"\n DalFry\t\t{self.dalfry.get()}\tRs.{self.sp_d_p}")
-        if self.burger.get():
-            self.textarea.insert(tk.END, f"\n Burger\t\t{self.burger.get()}\tRs.{self.sp_b_p}")
-        if self.sspsandwich.get():
-            self.textarea.insert(tk.END, f"\n SSPSandwich\t{self.sspsandwich.get()}\tRs.{self.sp_s_p}")
-        if self.fries.get():
-            self.textarea.insert(tk.END, f"\n Fries\t\t{self.fries.get()}\tRs.{self.sp_f_p}")
-        if self.sspnoodles.get():
-            self.textarea.insert(tk.END, f"\n SSPNoodles\t{self.sspnoodles.get()}\tRs.{self.sp_n_p}")
-        if self.biryani.get():
-            self.textarea.insert(tk.END, f"\n Biryani\t\t{self.biryani.get()}\tRs.{self.sp_by_p}")
-        if self.paneer_butter_masala.get():
-            self.textarea.insert(tk.END, f"\n Paneer Butter Masala\t{self.paneer_butter_masala.get()}\tRs.{self.sp_pbm_p}")
-        if self.veg_handi.get():
-            self.textarea.insert(tk.END, f"\n Veg Handi\t{self.veg_handi.get()}\tRs.{self.sp_vh_p}")
+        # ---------------- SPECIALITIES ----------------
+        special_items = [
+            ("DalFry", self.dalfry, self.sp_d_p),
+            ("Burger", self.burger, self.sp_b_p),
+            ("SSPSandwich", self.sspsandwich, self.sp_s_p),
+            ("Fries", self.fries, self.sp_f_p),
+            ("SSPNoodles", self.sspnoodles, self.sp_n_p),
+            ("Biryani", self.biryani, self.sp_by_p),
+            ("Paneer Butter Masala", self.paneer_butter_masala, self.sp_pbm_p),
+            ("Veg Handi", self.veg_handi, self.sp_vh_p)
+        ]
+        for name, qty, price in special_items:
+            if qty.get():
+                self.textarea.insert(tk.END, f"\n {name}\t{qty.get()}\tRs.{price}")
 
-        # drinks
-        if self.tea.get():
-            self.textarea.insert(tk.END, f"\n Tea\t\t{self.tea.get()}\tRs.{self.b_t_p}")
-        if self.coffee.get():
-            self.textarea.insert(tk.END, f"\n Coffee\t\t{self.coffee.get()}\tRs.{self.b_co_p}")
-        if self.drinks.get():
-            self.textarea.insert(tk.END, f"\n Drinks\t\t{self.drinks.get()}\tRs.{self.b_d_p}")
-        if self.buttermilk.get():
-            self.textarea.insert(tk.END, f"\n Buttermilk\t{self.buttermilk.get()}\tRs.{self.b_b_p}")
-        if self.lassi.get():
-            self.textarea.insert(tk.END, f"\n Lassi\t\t{self.lassi.get()}\tRs.{self.b_l_p}")
-        if self.coco.get():
-            self.textarea.insert(tk.END, f"\n Coco\t\t{self.coco.get()}\tRs.{self.b_c_p}")
-        if self.masala_chaas.get():
-            self.textarea.insert(tk.END, f"\n Masala Chaas\t{self.masala_chaas.get()}\tRs.{self.b_mc_p}")
-        if self.faluda.get():
-            self.textarea.insert(tk.END, f"\n Faluda\t\t{self.faluda.get()}\tRs.{self.b_f_p}")
+        # ---------------- BEVERAGES ----------------
+        drink_items = [
+            ("Tea", self.tea, self.b_t_p),
+            ("Coffee", self.coffee, self.b_co_p),
+            ("Drinks", self.drinks, self.b_d_p),
+            ("Buttermilk", self.buttermilk, self.b_b_p),
+            ("Lassi", self.lassi, self.b_l_p),
+            ("Coco", self.coco, self.b_c_p),
+            ("Masala Chaas", self.masala_chaas, self.b_mc_p),
+            ("Faluda", self.faluda, self.b_f_p)
+        ]
+        for name, qty, price in drink_items:
+            if qty.get():
+                self.textarea.insert(tk.END, f"\n {name}\t{qty.get()}\tRs.{price}")
 
+        # ---------------- BILL TOTAL ----------------
         self.textarea.insert(tk.END, "\n----------------------------------------------")
         self.textarea.insert(tk.END, f"\n GST        : Rs. {self.total_gst}")
         self.textarea.insert(tk.END, f"\n Item Total : Rs. {self.item_bill}")
@@ -493,7 +589,29 @@ class Bill_App:
         self.textarea.insert(tk.END, "\n     Thank You For Visiting!     ")
         self.textarea.insert(tk.END, "\n----------------------------------------------")
 
-        self.save_bill_to_db()
+        # ---------------- UPDATE OR INSERT INTO DB ----------------
+        if self.db_conn and self.db_cursor:
+            try:
+                # Check if bill exists
+                self.db_cursor.execute(
+                    "SELECT id FROM bills WHERE bill_number=%s",
+                    (self.bill_no.get(),)
+                )
+                exists = self.db_cursor.fetchone()
+
+                if exists:
+                    # Ask user if they want to update
+                    if messagebox.askyesno("Update Existing Bill",
+                                        "This bill already exists. Do you want to update it?"):
+                        self.update_bill_in_database()
+                        messagebox.showinfo("Updated", "Bill updated successfully!")
+                else:
+                    # Insert new bill
+                    self.save_bill_to_db()
+
+            except Error as e:
+                messagebox.showerror("Database Error", f"Could not save/update bill.\n\n{e}")
+
 
     # ------------------------------------------------------------------
     # DB + FILE SAVE / SEARCH
